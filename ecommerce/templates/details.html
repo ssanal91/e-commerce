@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Details</title>
+</head>
+<body>
+{% block content %}
+
+<div class="container mt-2" style="margin-bottom:50px; width:800px;">
+    <div class="row ">
+        <div class="col-4 me-5">
+<!--    <img src="" height="600px" width="100%">-->
+            <img src="{{p.image.url}}" class="image my-2" height="300px" width="100%">
+        </div>
+
+         <div class="col-4 me-5">
+<!--             <h4> Name </h4>-->
+<!--             <p> Discription </p>-->
+<!--             <h3> Price </h3>-->
+<!--             <h3> Stock </h3>-->
+<!--             <a href="" class="btn btn-primary"> Add to cart </a>-->
+             <h4>{{p.name}} </h4>
+             <p> {{p.desc}} </p>
+             <h3> {{p.price}}</h3>
+             <h3> {{p.stock}}</h3>
+
+<!--             if logged user is superuser or admin then should show this or else show cart for that -->
+             {% if user.is_superuser == True %}
+
+                {% if p.stock > 0 %}
+                    <h3 class="text-primary">Product in stock </h3>
+                    <a href="{% url 'admin:index' %}" class="btn btn-primary"> Add Stock </a>
+                    {% else %}
+                    <h3 class="text-primary">out of stock </h3>
+                    <a href="{% url 'admin:index' %}" class="btn btn-primary"> Add Stock </a>
+                {% endif %}
+
+
+             {% else %}
+                {% if p.stock > 0 %}
+                <a href="{% url 'cart:addtocart' p.id %}" class="btn btn-primary"> Add to cart </a>
+                    {% else %}
+                    <h3 class="text-primary">Out of stock </h3>
+                {% endif %}
+
+             {% endif %}
+         </div>
+    </div>
+</div>
+{% endblock %}
+
+
+</body>
+</html>

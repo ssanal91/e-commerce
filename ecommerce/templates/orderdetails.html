@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block content %}
+
+<!--{{message}}-->
+<div class="continer" mt-5>
+    <h4 class="text-center">{{message}}</h4>
+    <h6 class="text-center">Thank you </h6>
+    <h3 class="text-center"><a href="{% url 'shop:allcat' %}" class="btn btn-success"> Continue Shoping</a></h3>
+</div>
+
+{% endblock %}
+</body>
+</html>

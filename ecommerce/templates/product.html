@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
+      xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Product</title>
+</head>
+<body>
+{% block content %}
+
+<div class="container-fluid " style="margin-bottom:50px;">
+    <img src="{{c.image.url}}" height="600px" width="100%">
+</div>
+<div class="container-fluid mt-1" style="margin-bottom:100px;">
+    <center>
+        <h3 class="text center text-light fw-bold"> <i> <u> {{c.name}} </u> </i> </h3>
+</div>
+
+<div class="container-fluid mt-1" style="margin-bottom:100px;">
+    <div class="row">
+        {% for i in p %}
+        <div class="col-sm-4">
+             <div class="card mt-2" style="width: 18rem;">
+                <img src="{{i.image.url}}" class="card-img-top" style="height:190px;">
+                    <div class="card-body" style="height:250px; width:290px;">
+                    <h5 class="card-title text-center">{{i.name}}</h5>
+
+<!--                    <a href="{% url 'shop:allprod' i.id %}" class="btn btn-success mt-1" style="position:relative;left:32%;width:200px ">Products</a>-->
+                    <a href="{% url 'shop:detail' i.id %}" class="btn btn-success mt-1" style="position:relative;left:15%;width:200px ">Products</a>
+<!--                    ividunnu click cheyyumbo detailsilot pokanam .product clik cheyyumbo  produt detailsilot pokanam ivid link kodukknam-->
+                    </div>
+             </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+
+{% endblock %}
+
+
+</body>
+</html>
